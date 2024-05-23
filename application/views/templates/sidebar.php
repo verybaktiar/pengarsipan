@@ -100,6 +100,16 @@
 			<span>Program</span>
 		</a>
 	</li>
+	<li class="nav-item
+	  <?php if (current_url() == base_url('dokumentasi')) {
+			echo 'active';
+		} ?>
+	">
+		<a class="nav-link" href="<?php echo base_url('dokumentasi') ?>">
+			<i class="fas fa-fw fa-book"></i>
+			<span>Dokumentasi</span>
+		</a>
+	</li>
 	<!-- Nav Item - Utilities Collapse Menu -->
 	
    <li class="nav-item 

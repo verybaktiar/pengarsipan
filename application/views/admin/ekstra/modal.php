@@ -257,28 +257,33 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Jenis Surat</label>
-								<select class="form-control" name="id_indeks">
-									<?php foreach ($indeks as $i) : ?>
-										<option value="<?php echo $i->id_indeks; ?>">
-											<?php echo strtoupper($i->judul_indeks); ?>
-										</option>
-									<?php endforeach; ?>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Dokumen surat</label>
+								<label>Persetujuan Dokumen Surat</label>
 								<div class="input-group">
-									
+									<!-- Kosong, sesuai kebutuhan Anda -->
 								</div>
 								<div class="mt-3">
-									<button type="button" class="btn btn-success">Terima</button>
-									<button type="button" class="btn btn-danger">Tolak</button>
+									<button type="button" id="btnSetuju" class="btn btn-success">Setuju</button>
+									<button type="button" id="btnTolak" class="btn btn-danger">Tolak</button>
 								</div>
-								
+								<div id="inputDokumenSetuju" style="display:none;" class="mt-3">
+									<label>Persetujuan Dokumen Surat</label>
+									<input type="text" name="dokumen_persetujuan" id="dokumenDisetujui" class="form-control">
+								</div>
 							</div>
+							<script>
+								document.getElementById('btnSetuju').addEventListener('click', function() {
+									document.getElementById('inputDokumenSetuju').style.display = 'block';
+									document.getElementById('dokumenDisetujui').value = 'Dokumen Disetujui';
+								});
+
+								document.getElementById('btnTolak').addEventListener('click', function() {
+									document.getElementById('inputDokumenSetuju').style.display = 'block';
+									document.getElementById('dokumenDisetujui').value = 'Dokumen Ditolak';
+								});
+							</script>
+
 						</div>
-						
+
 						<div class="col-md-12">
 							<div class="form-group">
 								<label>Keterangan</label>
@@ -363,7 +368,7 @@
 								<small class="text-danger">Dokumen surat, bisa berupa doc, docx, pdf, jpg dan png.</small>
 							</div>
 						</div>
-						
+
 						<div class="col-md-12">
 							<div class="form-group">
 								<label>Keterangan</label>

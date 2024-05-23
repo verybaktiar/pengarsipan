@@ -23,9 +23,8 @@ class Admin extends CI_Controller
 		} elseif ($this->session->userdata('level') == 2) {
 			$data['user'] = 'admin';
 		} elseif ($this->session->userdata('level') == 3) {
-		$data['user'] = 'member';
-		
-	}
+			$data['user'] = 'member';
+		}
 
 		$today = date('Y-m-d');
 		$sm_today = "tanggal_diterima='$today'";
@@ -503,10 +502,7 @@ class Admin extends CI_Controller
 		$tujuan = htmlspecialchars($this->input->post('tujuan'));
 		$tanggal_keluar = htmlspecialchars($this->input->post('tanggal_keluar'));
 		$keterangan = htmlspecialchars($this->input->post('keterangan'));
-		$namaberkas_suratkeluar = $_FILES['berkas_suratkeluar']['name'];
-		$exp = explode('.', $namaberkas_suratkeluar);
-		$typeberkas_suratkeluar = end($exp);
-		$berkas_suratkeluar = uniqid() . '.' . $typeberkas_suratkeluar;
+		$dokumen_persetujuan = htmlspecialchars($this->input->post('dokumen_persetujuan'));
 
 		$cek_no = $this->model_surat->getdatawithadd('suratkeluar', 'no_suratkeluar="' . $no_suratkeluar . '"')->row_array();
 		if (!$cek_no) {
@@ -519,43 +515,20 @@ class Admin extends CI_Controller
 				'tujuan' => $tujuan,
 				'tanggal_keluar' => $tanggal_keluar,
 				'keterangan' => $keterangan,
-				'berkas_suratkeluar' => $berkas_suratkeluar
+				'dokumen_persetujuan' => $dokumen_persetujuan
 			];
-			if ($berkas_suratkeluar != null) {
-				$config['upload_path']          = 'vendor/files/suratkeluar/';
-				$config['allowed_types']        = 'jpeg|jpg|png|doc|docx|pdf';
-				$config['file_name'] = $berkas_suratkeluar;
 
-				$this->load->library('upload', $config);
-
-				if (!$this->upload->do_upload('berkas_suratkeluar')) {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-times"></i> ' . $this->upload->display_errors() . '!</h5>
-                        </div>');
-					redirect('admin/suratkeluar');
-				} else {
-					$this->upload->do_upload();
-					$this->model_surat->adddata('suratkeluar', $array);
-					$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-check"></i> Data ditambahkan!</h5>
-                        </div>');
-					redirect('admin/suratkeluar');
-				}
-			} else {
-				$this->model_surat->adddata('suratkeluar', $array);
-				$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-check"></i> Data ditambahkan!</h5>
-                    </div>');
-				redirect('admin/suratkeluar');
-			}
+			$this->model_surat->adddata('suratkeluar', $array);
+			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-check"></i> Data ditambahkan!</h5>
+            </div>');
+			redirect('admin/suratkeluar');
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-times"></i> Nomor surat sudah ada!</h5>
-                </div>');
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-times"></i> Nomor surat sudah ada!</h5>
+            </div>');
 			redirect('admin/suratkeluar');
 		}
 	}
@@ -1026,8 +999,7 @@ class Admin extends CI_Controller
 			$data['user'] = 'superadmin';
 		} elseif ($this->session->userdata('level') == 2) {
 			$data['user'] = 'admin';
-		}
-		elseif ($this->session->userdata('level') == 3) {
+		} elseif ($this->session->userdata('level') == 3) {
 			$data['user'] = 'member';
 		}
 
@@ -1048,8 +1020,7 @@ class Admin extends CI_Controller
 			$data['user'] = 'superadmin';
 		} elseif ($this->session->userdata('level') == 2) {
 			$data['user'] = 'admin';
-		}
-		elseif ($this->session->userdata('level') == 3) {
+		} elseif ($this->session->userdata('level') == 3) {
 			$data['user'] = 'member';
 		}
 
