@@ -48,8 +48,13 @@
                                                     </div>
                                                 </p>
                                                 <div class="editprofil">
+                                                <?php if ($user == 'superadmin' || $user == '') { ?>
                                                     <a href="#" data-id_user="<?= $p->id_user ?>" data-toggle="modal" data-target="#editprofil" class="btn btn-primary btn-flat"><i class="fas fa-edit"></i> Edit profil</a>
-                                                    <a href="#" data-id_user="<?= $p->id_user ?>" data-toggle="modal" data-target="#gantipassword" class="btn btn-primary btn-flat"><i class="fas fa-key"></i> Ganti password</a>
+                                                        <a href="#" data-id_user="<?= $p->id_user ?>" data-toggle="modal" data-target="#gantipassword" class="btn btn-primary btn-flat"><i class="fas fa-key"></i> Ganti password</a>
+										<?php } else {
+										} ?>
+                                                      
+                                                
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
@@ -74,4 +79,5 @@
     </div>
     <!-- End of Content Wrapper -->
 
+</div>
 </div>s

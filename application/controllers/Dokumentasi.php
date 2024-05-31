@@ -35,12 +35,11 @@ class Dokumentasi extends CI_Controller {
 	}
     public function create()
 	{
-		$this->form_validation->set_rules('nama_kegiatan', 'nama_kegiatan', 'required');
-		$this->form_validation->set_rules('tanggal_kegiatan', 'tanggal_kegiatan', 'required');
-		$this->form_validation->set_rules('deskripsi_kegiatan', 'deskripsi_kegiatan', 'required');
+		$this->form_validation->set_rules('nama_kegiatan', 'Nama Kegiatan', 'required');
+		$this->form_validation->set_rules('tanggal_kegiatan', 'Tanggal Kegiatan', 'required');
+		$this->form_validation->set_rules('deskripsi_kegiatan', 'Deskripsi Kegiatan', 'required');
 
-
-		if ($this->form_validation->run() === FALSE) {
+		if ($this->form_validation->run() == FALSE) {
 			if ($this->session->userdata('level') == 1) {
 				$data['user'] = 'superadmin';
 			} elseif ($this->session->userdata('level') == 2) {
@@ -51,32 +50,36 @@ class Dokumentasi extends CI_Controller {
 			$this->load->view('dokumentasi/create', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$data = array(
+			// Upload gambar
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('gambar')) {
+				$gambar = $this->upload->data('file_name');
+			} else {
+				$gambar = '';
+			}
+
+			// Upload PDF
+			if ($this->upload->do_upload('pdf')) {
+				$pdf = $this->upload->data('file_name');
+			} else {
+				$pdf = '';
+			}
+
+			// Simpan data ke database
+			$data = [
 				'nama_kegiatan' => $this->input->post('nama_kegiatan'),
 				'tanggal_kegiatan' => $this->input->post('tanggal_kegiatan'),
 				'deskripsi_kegiatan' => $this->input->post('deskripsi_kegiatan'),
-			
-			);
+				'gambar' => $gambar,
+				'pdf' => $pdf
+			];
 
-			// Handle file upload
-			$config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|jpeg|png';
-			$config['max_size'] = 2048; // 2MB
-			$this->load->library('upload', $config);
-
-			if (!$this->upload->do_upload('gambar')) {
-				$error = array('error' => $this->upload->display_errors());
-				$this->load->view('templates/header', $data);
-				$this->load->view('dokumentasi/create', $error);
-				$this->load->view('templates/footer');
-			} else {
-				$file_data = $this->upload->data();
-				$data['gambar'] = $file_data['file_name'];
-
-				$this->Dokumentasi_model->tambahdokumentasi($data);
-				$this->session->set_flashdata('message', 'Data berhasil ditambah');
-				redirect('dokumentasi');
-			}
+			$this->Dokumentasi_model->tambahdokumentasi($data);
+			$this->session->set_flashdata('message', 'Data berhasil ditambah');
+			redirect('dokumentasi');
 		}
 	}
 
@@ -141,10 +144,10 @@ class Dokumentasi extends CI_Controller {
 
 		public function delete($id)
 		{
-			$this->program_model->hapusprogram($id);
+			$this->Dokumentasi_model->hapusdokumentasi($id);
 
 			$this->session->set_flashdata('message', 'data berhasil dihapus');
-			redirect('program');
+			redirect('dokumentasi');
 		}
 	}
 

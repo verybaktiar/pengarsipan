@@ -59,6 +59,10 @@
 										<label for="">penanggung jawab</label>
 										<input type="text" name="penanggung_jawab" placeholder="penanggung jawab" id="penanggung_jawab" class="form-control">
 									</div>
+									<div class="form-group">
+										<label for="">No Hp</label>
+										<input type="text" name="no_hp" placeholder="no hp" id="no_hp" class="form-control">
+									</div>
 									<button type="submit" class="btn btn-primary">Simpan</button>
 								</form>
 							</div>

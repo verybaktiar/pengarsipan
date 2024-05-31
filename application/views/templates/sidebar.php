@@ -6,7 +6,7 @@
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-envelope"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3">SIM BKR <br></div>
+		<div class="sidebar-brand-text mx-3">BKR <br></div>
 	</a>
 
 	<!-- Divider -->
@@ -55,7 +55,34 @@
     <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
 		echo 'active';
 	} ?>">
-	<?php if ($user == 'superadmin' || $user =='admin') : ?>
+	<?php if ($user == 'admin') : ?>
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-envelope"></i>
+			<span>Surat</span>
+		</a>
+		<div id="collapseTwo" class="collapse 
+        <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
+			echo 'show';
+		} ?>" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">List:</h6>
+				<a class="collapse-item 
+                <?php if (current_url() == base_url('admin/suratkeluar')) {
+					echo 'active';
+				} ?>" href="<?php echo base_url('admin/suratkeluar') ?>">Surat Masuk</a>
+				<a class="collapse-item 
+                <?php if (current_url() == base_url('admin/suratmasuk')) {
+					echo 'active';
+				} ?>" href="<?php echo base_url('admin/suratmasuk') ?>">Surat Keluar</a>
+			</div>
+		</div>
+	<?php endif; ?>
+	</li>
+	<li class="nav-item 
+    <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
+		echo 'active';
+	} ?>">
+	<?php if ($user == 'superadmin') : ?>
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-envelope"></i>
 			<span>Surat</span>
@@ -76,7 +103,7 @@
 				} ?>" href="<?php echo base_url('admin/suratkeluar') ?>">Surat Keluar</a>
 			</div>
 		</div>
-		<?php endif; ?>
+	<?php endif; ?>
 	</li>
 
 	<!-- <li class="nav-item
@@ -90,7 +117,7 @@
 		</a>
 	</li> -->
 	
-	<li class="nav-item
+	<!-- <li class="nav-item
 	  <?php if (current_url() == base_url('program')) {
 			echo 'active';
 		} ?>
@@ -99,7 +126,7 @@
 			<i class="fas fa-fw fa-book"></i>
 			<span>Program</span>
 		</a>
-	</li>
+	</li> -->
 	<li class="nav-item
 	  <?php if (current_url() == base_url('dokumentasi')) {
 			echo 'active';
@@ -107,7 +134,7 @@
 	">
 		<a class="nav-link" href="<?php echo base_url('dokumentasi') ?>">
 			<i class="fas fa-fw fa-book"></i>
-			<span>Dokumentasi</span>
+			<span>Materi</span>
 		</a>
 	</li>
 	<!-- Nav Item - Utilities Collapse Menu -->
@@ -172,21 +199,7 @@
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 
-	<!-- Heading -->
-	<div class="sidebar-heading">
-		Lainnya
-	</div>
 
-	<!-- Nav Item - Charts -->
-	<li class="nav-item 
-    <?php if (current_url() == base_url('admin/about')) {
-		echo 'active';
-	} ?>">
-		<a class="nav-link" href="<?php echo base_url('admin/about') ?>">
-			<i class="fas fa-fw fa-info-circle"></i>
-			<span>Tentang BKR</span>
-		</a>
-	</li>
 	<hr class="sidebar-divider d-none d-md-block">
 
 	<!-- Sidebar Toggler (Sidebar) -->

@@ -15,7 +15,7 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-4 text-gray-800">Jadwal</h1>
+				<h1 class="h3 mb-4 text-gray-800">Otomatisasi Jadwal</h1>
 				<div class="card card-success">
 					<div class="card-body">
 
@@ -46,6 +46,7 @@
 										<th>Waktu</th>
 										<th>Keterangan</th>
 										<th>Penanggung Jawab</th>
+										<th>No.Hp</th>
 										<?php if ($user == 'superadmin') { ?>
 										<th>Aksi</th>
 										<?php } else {
@@ -64,6 +65,7 @@
 											<td><?= $sm->waktu; ?></td>
 											<td><?= $sm->keterangan; ?></td>
 											<td><?= $sm->penanggung_jawab; ?></td>
+											<td><?= $sm->no_hp; ?></td>
 											<?php if ($user == 'superadmin') { ?>
 												<td>
 													<a href="<?= base_url('jadwal/edit/' . $sm->id_jadwal) ?>"><span class="badge badge-warning d-block">Edit</span></a>

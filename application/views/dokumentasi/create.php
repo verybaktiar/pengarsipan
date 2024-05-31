@@ -12,7 +12,7 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Dokumentasi Kegiatan</h1>
+                <h1 class="h3 mb-4 text-gray-800">Materi</h1>
                 <div class="card card-success">
                     <div class="card-body">
                         <?= $this->session->flashdata('message'); ?>
@@ -46,6 +46,11 @@
                                         <label for="gambar">Upload Gambar Kegiatan</label>
                                         <input type="file" name="gambar" id="gambar" class="form-control-file">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="pdf">Upload PDF Kegiatan</label>
+                                        <input type="file" name="pdf" id="pdf" class="form-control-file" accept="application/pdf">
+                                    </div>
+                                    
                                         <!-- <div class="form-group">
                                             <label>Dokumen Surat</label>
                                             <div class="input-group">
@@ -73,5 +78,6 @@
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->
+</div>
 </div>
 </div>

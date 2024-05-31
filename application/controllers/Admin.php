@@ -25,6 +25,7 @@ class Admin extends CI_Controller
 		} elseif ($this->session->userdata('level') == 3) {
 			$data['user'] = 'member';
 		}
+		
 
 		$today = date('Y-m-d');
 		$sm_today = "tanggal_diterima='$today'";
@@ -33,8 +34,11 @@ class Admin extends CI_Controller
 		$data['count_sk'] = $this->model_surat->countdata('suratkeluar')->result();
 		$data['sm_today'] = $this->model_surat->getdatawithadd('suratmasuk', $sm_today)->result();
 		$data['sk_today'] = $this->model_surat->getdatawithadd('suratkeluar', $sk_today)->result();
-		$data['count_indeks'] = $this->model_surat->countother('indeks')->result();
+		$data['count_jadwal'] = $this->model_surat->countother('jadwal')->result();
 		$data['count_users'] = $this->model_surat->countother('user')->result();
+		$data['count_galeri'] = $this->model_surat->countother('dokumentasi')->result();
+		$data['jadwal'] = $this->model_surat->get_all_jadwal();
+		$data['dokumentasi'] = $this->model_surat->get_all_dokumentasi();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('admin/dashboard', $data);
@@ -503,6 +507,7 @@ class Admin extends CI_Controller
 		$tanggal_keluar = htmlspecialchars($this->input->post('tanggal_keluar'));
 		$keterangan = htmlspecialchars($this->input->post('keterangan'));
 		$dokumen_persetujuan = htmlspecialchars($this->input->post('dokumen_persetujuan'));
+	
 
 		$cek_no = $this->model_surat->getdatawithadd('suratkeluar', 'no_suratkeluar="' . $no_suratkeluar . '"')->row_array();
 		if (!$cek_no) {
@@ -515,7 +520,8 @@ class Admin extends CI_Controller
 				'tujuan' => $tujuan,
 				'tanggal_keluar' => $tanggal_keluar,
 				'keterangan' => $keterangan,
-				'dokumen_persetujuan' => $dokumen_persetujuan
+				'dokumen_persetujuan' => $dokumen_persetujuan,
+
 			];
 
 			$this->model_surat->adddata('suratkeluar', $array);

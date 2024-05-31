@@ -58,4 +58,12 @@ class Model_surat extends CI_Model
 	{
 		return $this->db->delete($table, $where);
 	}
+	function get_all_jadwal()
+	{
+		return $this->db->get('jadwal')->result();
+	}
+	function get_all_dokumentasi()
+	{
+		return $this->db->get('dokumentasi')->result();
+	}
 }

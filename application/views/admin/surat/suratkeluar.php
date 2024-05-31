@@ -18,7 +18,11 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-4 text-gray-800">Surat Keluar</h1>
+				<?php if ($user == 'admin') { ?>
+                    <h1 class="h3 mb-4 text-gray-800">Surat Masuk</h1>
+                <?php } else { ?>
+                    <h1 class="h3 mb-4 text-gray-800">Surat Keluar</h1>
+                <?php } ?>
 				<div class="card card-success">
 					<div class="card-body">
 						<?= $this->session->flashdata('message'); ?>
@@ -39,11 +43,12 @@
 										<th>Nomor Surat Masuk</th>
 										<th>Nomor Surat</th>
 										<th>Judul Surat</th>
-										<th>Indeks</th>
+										<!-- <th>Indeks</th> -->
 										<th>Tujuan</th>
 										<th>Tanggal Keluar</th>
 										<th>Keterangan</th>
 										<th>Berkas</th>
+										<th>Dokumen Persetujuan</th>
 										<?php if ($user == 'admin' || $user == 'superadmin') { ?>
 											<th>Aksi</th>
 										<?php } else { 
@@ -58,7 +63,7 @@
 											<td><?= $sk->no_suratmasuk; ?></td>
 											<td><?= $sk->no_suratkeluar; ?></td>
 											<td><?= $sk->judul_suratkeluar; ?></td>
-											<td><?= $sk->judul_indeks; ?></td>
+											<!-- <td><?= $sk->judul_indeks; ?></td> -->
 											<td><?= $sk->tujuan; ?></td>
 											<td><?php $date = date_create($sk->tanggal_keluar);
 												echo date_format($date, 'd/m/Y'); ?></td>
@@ -69,6 +74,7 @@
 																echo '#';
 															}  ?>" class="text-success"><i class="fas fa-download"></i></a></i></a>
 											</td>
+											<td><?= $sk->dokumen_persetujuan; ?></td>
 											<?php if ($user == 'admin' || $user == 'superadmin') { ?>
 												<td>
 													<!-- <a href="javascript:;" data-id-sk="<?php echo $sk->id_suratkeluar ?>" data-toggle="modal" data-target="#ubahsk" class="badge badge-primary d-block">edit</a>

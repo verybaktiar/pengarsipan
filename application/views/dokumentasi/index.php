@@ -14,7 +14,7 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-4 text-gray-800">Dokumentasi</h1>
+				<h1 class="h3 mb-4 text-gray-800">Materi</h1>
 				<div class="card card-success">
 					<div class="card-body">
 
@@ -42,7 +42,12 @@
 										<th>Tanggal Kegiatan</th>
 										<th>Deskripsi Kegiatan</th>
 										<th>Gambar</th>
-										<?php if ($user == 'superadmin' || $user == 'admin') { ?>
+										<th>PDF</th>
+										<?php if ($user == 'superadmin' || $user == '') { ?>
+											<th>Aksi</th>
+										<?php } else {
+										} ?>
+										<?php if ($user == 'admin' || $user == 'member') { ?>
 											<th>Aksi</th>
 										<?php } else {
 										} ?>
@@ -65,17 +70,41 @@
 													<p>Tidak ada gambar</p>
 												<?php endif; ?>
 											</td>
-											<?php if ($user == 'superadmin') { ?>
+											<td>
+												<?php if ($sm->pdf) : ?>
+													<a href="<?= base_url('uploads/' . $sm->pdf); ?>" class="btn btn-success" download><i class="fas fa-download"></i></a>
+												<?php else : ?>
+													<p>Tidak ada PDF</p>
+												<?php endif; ?>
+											</td>
+											<?php if ($user == 'superadmin' || $user == '') { ?>
 												<td>
 													<a href="<?= base_url('dokumentasi/edit/' . $sm->id_dokumentasi) ?>"><span class="badge badge-warning d-block">Edit</span></a>
 													<br>
 													<a onclick="return confirm('Apakah anda yakin?')" href=" <?= base_url('dokumentasi/delete/' . $sm->id_dokumentasi) ?>"><span class="badge badge-danger d-block">Hapus</span></a>
 													<br>
-												<?php if ($sm->gambar) : ?>
-													<a href="<?= base_url('uploads/' . $sm->gambar); ?>"><span class="badge badge-success d-block">Download</span></a>
-												<?php endif; ?>
-											</td>
-												
+													<?php if ($sm->gambar) : ?>
+														<a href="<?= base_url('uploads/' . $sm->gambar); ?>"><span class="badge badge-success d-block">Download</span></a>
+													<?php endif; ?>
+													<?php if ($user == '' || $user == 'admin') { ?>
+														<?php if ($sm->gambar) : ?>
+															<a href="<?= base_url('uploads/' . $sm->gambar); ?>"><span class="badge badge-success d-block">Download</span></a>
+														<?php endif; ?>
+													<?php } ?>
+												</td>
+											<?php } else {
+											} ?>
+
+
+											<?php if ($user == 'admin' || $user == 'member') { ?>
+												<td>
+													
+													<?php if ($user == 'member' || $user == 'admin') { ?>
+														<?php if ($sm->gambar) : ?>
+															<a href="<?= base_url('uploads/' . $sm->gambar); ?>"><span class="badge badge-success d-block">Download</span></a>
+														<?php endif; ?>
+													<?php } ?>
+												</td>
 											<?php } else {
 											} ?>
 										</tr>
@@ -96,5 +125,8 @@
 		<!-- End of Footer -->
 	</div>
 	<!-- End of Content Wrapper -->
+</div>
+</div>
+</div>
 </div>
 </div>

@@ -18,7 +18,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Indeks</h1>
+                <h1 class="h3 mb-4 text-gray-800">Manajemen User</h1>
                 <div class="card card-success">
                     <div class="card-body">
                         <?= $this->session->flashdata('message'); ?>

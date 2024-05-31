@@ -18,7 +18,11 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Surat Masuk</h1>
+                <?php if ($user == 'admin') { ?>
+                    <h1 class="h3 mb-4 text-gray-800">Surat Keluar</h1>
+                <?php } else { ?>
+                    <h1 class="h3 mb-4 text-gray-800">Surat Masuk</h1>
+                <?php } ?>
                 <div class="card card-success">
                     <div class="card-body">
                         <?= $this->session->flashdata('message'); ?>
@@ -44,6 +48,7 @@
                                         <th>Tanggal Diterima</th>
                                         <th>Keterangan</th>
                                         <th>Berkas</th>
+                                        
                                         <?php if ($user == 'superadmin') : ?>
                                             <th>Balas Surat</th>
                                         <?php endif ?>

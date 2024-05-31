@@ -13,14 +13,36 @@
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('vendor/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url('vendor/') ?>css/sb-admin-2.min.css" rel="stylesheet">
 
+  <style>
+    .bg-image {
+      background-image: url('<?php echo base_url('uploads/logo.png'); ?>');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    }
+
+    .login-card {
+      margin-top: 150px; /* Adjust this value to move the card further down */
+      background: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+      border-radius: 10px; /* Optional: rounded corners */
+    }
+
+    .login-title {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #333;
+    }
+  </style>
+
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-image">
 
   <div class="container">
 
@@ -29,14 +51,14 @@
 
       <div class="col-md-6">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg login-card">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"><?php echo $title; ?></h1>
+                    <h1 class="h4 login-title mb-4">Sistem Otomatisasi Informasi Jadwal Sosialisasi Bina Keluarga Remaja</h1>
                   </div>
                   <?php echo $this->session->flashdata('message'); ?>
                   <form class="user" action="<?php echo base_url('auth'); ?>" method="post">

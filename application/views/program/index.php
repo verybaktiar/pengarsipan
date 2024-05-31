@@ -46,7 +46,7 @@
 										<th>tempat</th>
 										<th>Penanggung Jawab</th>
 										<th>Gambar</th>
-									<?php if ($user == 'superadmin' || $user == 'admin' ) { ?>
+									<?php if ($user == 'superadmin' || $user == '' ) { ?>
 										<th>Aksi</th>
 											<?php } else {
 											} ?>
