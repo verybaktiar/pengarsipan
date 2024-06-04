@@ -2,100 +2,118 @@
 <html lang="en">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title><?= $main_title; ?> - <?php echo $title; ?></title>
-
-  <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url('vendor/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="<?php echo base_url('vendor/') ?>css/sb-admin-2.min.css" rel="stylesheet">
-
+<title><?= $main_title; ?> - <?php echo $title; ?></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="<?php echo base_url('vendor/login/') ?>images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>css/util.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('vendor/login/') ?>css/main.css">
+  <!--===============================================================================================-->
   <style>
-    .bg-image {
-      background-image: url('<?php echo base_url('uploads/logo.png'); ?>');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-    }
-
-    .login-card {
-      margin-top: 150px; /* Adjust this value to move the card further down */
-      background: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
-      border-radius: 10px; /* Optional: rounded corners */
-    }
-
     .login-title {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
-      color: #333;
+      margin-top: -150px; /* Mengatur margin atas */
+      font-size: 30px;   /* Mengatur ukuran font */
+      
     }
   </style>
-
 </head>
 
-<body class="bg-image">
+<body>
 
-  <div class="container">
+  <div class="limiter">
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="container-login100">
 
-      <div class="col-md-6">
-
-        <div class="card o-hidden border-0 shadow-lg login-card">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 login-title mb-4">Sistem Otomatisasi Informasi Jadwal Sosialisasi Bina Keluarga Remaja</h1>
-                  </div>
-                  <?php echo $this->session->flashdata('message'); ?>
-                  <form class="user" action="<?php echo base_url('auth'); ?>" method="post">
-                    <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="username" value="<?php echo set_value('username') ?>" placeholder="Masukkan username">
-                      <?= form_error('username', '<small class="text-danger pl-3 pt-0">', '</small>'); ?>
-                    </div>
-                    <div class="form-group">
-                      <input type="password" id="password" class="form-control form-control-user" name="password" placeholder="Password">
-                      <div class="checkbox">
-                        <label for=""><input type="checkbox" class="mx-2" name="" id="showpass"> Lihat password</label>
-                      </div>
-                      <?= form_error('password', '<small class="text-danger pl-3 pt-0">', '</small>'); ?>
-                    </div>
-                    <button type="submit" name="masuk" class="btn btn-primary btn-user btn-block">Masuk</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="wrap-login100">
+        <div class="text-center">
+          <h1 class="h4 login-title mb-4">Sistem Otomatisasi Informasi Jadwal Sosialisasi Bina Keluarga Remaja</h1>
+        </div>
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="<?php echo base_url('vendor/login/') ?>images/logo.png" alt="IMG">
         </div>
 
+       
+        <form class="login100-form validate-form" action="<?php echo base_url('auth'); ?>" method="post">
+          <span class="login100-form-title">
+            Member Login
+          </span>
+          <?php echo $this->session->flashdata('message'); ?>
+
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" name="username" value="<?php echo set_value('username') ?>" placeholder="Masukkan username">
+                      <?= form_error('username', '<small class="text-danger pl-3 pt-0">', '</small>'); ?>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <input class="input100" type="password" name="password" id="password" placeholder="Password">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+            <?= form_error('password', '<small class="text-danger pl-3 pt-0">', '</small>'); ?>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" name="masuk">
+              Login
+            </button>
+          </div>
+
+          <div class="text-center p-t-12">
+            <span class="txt1">
+
+            </span>
+            <a class="txt2" href="#">
+
+            </a>
+          </div>
+
+          <div class="text-center p-t-136">
+            <a class="txt2" href="#">
+
+              <i class="fa fa-long-arrow- m-l-5" aria-hidden="true"></i>
+            </a>
+          </div>
+        </form>
       </div>
-
     </div>
-
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url('vendor/') ?>vendor/jquery/jquery.min.js"></script>
-  <script src="<?php echo base_url('vendor/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url('vendor/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('vendor/') ?>js/sb-admin-2.min.js"></script>
+
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url('vendor/login/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url('vendor/login/') ?>vendor/bootstrap/js/popper.js"></script>
+  <script src="<?php echo base_url('vendor/login/') ?>vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url('vendor/login/') ?>vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url('vendor/login/') ?>vendor/tilt/tilt.jquery.min.js"></script>
+  <script>
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url('vendor/login/') ?>js/main.js"></script>
   <script>
     $(document).ready(function() {
       $('#showpass').click(function() {
