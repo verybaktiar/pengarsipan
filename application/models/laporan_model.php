@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class program_model extends CI_Model
+class laporan_model extends CI_Model
 {
-	function get_all_program()
+	function get_all_laporan()
 	{
 		return $this->db->get('laporan')->result();
 	}
-	public function tambah_program($data)
+	public function tambah_laporan($data)
 	{
 		// Menyimpan data program ke dalam tabel 'program'
 		$this->db->insert('laporan', $data);

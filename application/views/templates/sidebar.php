@@ -32,12 +32,12 @@
 			echo 'active';
 		} ?>
 	">
-	<?php if ($user == 'superadmin') : ?>
-  	
-		<a class="nav-link" href="<?php echo base_url('admin/users') ?>">
-			<i class="fas fa-fw fa-book"></i>
-			<span>Managemen User</span>
-		</a>
+		<?php if ($user == 'superadmin') : ?>
+
+			<a class="nav-link" href="<?php echo base_url('admin/users') ?>">
+				<i class="fas fa-fw fa-book"></i>
+				<span>Managemen User</span>
+			</a>
 		<?php endif; ?>
 	</li>
 	<li class="nav-item
@@ -55,55 +55,55 @@
     <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
 		echo 'active';
 	} ?>">
-	<?php if ($user == 'admin') : ?>
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-envelope"></i>
-			<span>Surat</span>
-		</a>
-		<div id="collapseTwo" class="collapse 
+		<?php if ($user == 'admin') : ?>
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<i class="fas fa-fw fa-envelope"></i>
+				<span>Surat</span>
+			</a>
+			<div id="collapseTwo" class="collapse 
         <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
-			echo 'show';
-		} ?>" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">List:</h6>
-				<a class="collapse-item 
+				echo 'show';
+			} ?>" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">List:</h6>
+					<a class="collapse-item 
                 <?php if (current_url() == base_url('admin/suratkeluar')) {
 					echo 'active';
 				} ?>" href="<?php echo base_url('admin/suratkeluar') ?>">Surat Masuk</a>
-				<a class="collapse-item 
+					<a class="collapse-item 
                 <?php if (current_url() == base_url('admin/suratmasuk')) {
 					echo 'active';
 				} ?>" href="<?php echo base_url('admin/suratmasuk') ?>">Surat Keluar</a>
+				</div>
 			</div>
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
 	</li>
 	<li class="nav-item 
     <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
 		echo 'active';
 	} ?>">
-	<?php if ($user == 'superadmin') : ?>
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-envelope"></i>
-			<span>Surat</span>
-		</a>
-		<div id="collapseTwo" class="collapse 
+		<?php if ($user == 'superadmin') : ?>
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<i class="fas fa-fw fa-envelope"></i>
+				<span>Surat</span>
+			</a>
+			<div id="collapseTwo" class="collapse 
         <?php if (current_url() == base_url('admin/suratmasuk') or current_url() == base_url('admin/suratkeluar')) {
-			echo 'show';
-		} ?>" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">List:</h6>
-				<a class="collapse-item 
+				echo 'show';
+			} ?>" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">List:</h6>
+					<a class="collapse-item 
                 <?php if (current_url() == base_url('admin/suratmasuk')) {
 					echo 'active';
 				} ?>" href="<?php echo base_url('admin/suratmasuk') ?>">Surat Masuk</a>
-				<a class="collapse-item 
+					<a class="collapse-item 
                 <?php if (current_url() == base_url('admin/suratkeluar')) {
 					echo 'active';
 				} ?>" href="<?php echo base_url('admin/suratkeluar') ?>">Surat Keluar</a>
+				</div>
 			</div>
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
 	</li>
 
 	<!-- <li class="nav-item
@@ -116,7 +116,7 @@
 			<span>Gambar</span>
 		</a>
 	</li> -->
-	
+
 	<!-- <li class="nav-item
 	  <?php if (current_url() == base_url('program')) {
 			echo 'active';
@@ -138,8 +138,8 @@
 		</a>
 	</li>
 	<!-- Nav Item - Utilities Collapse Menu -->
-	
-   <li class="nav-item 
+
+	<li class="nav-item 
     <?php if (current_url() == base_url('admin/indeks') or current_url() == base_url('admin/users') or current_url() == base_url('admin/profil')) {
 		echo 'active';
 	} ?>">
@@ -169,7 +169,7 @@
 				} ?>" href="<?php echo base_url('admin/profil') ?>">Profil</a>
 			</div>
 		</div>
-	</li> 
+	</li>
 
 	<!-- <li class="nav-item 
     <?php if (current_url() == base_url('admin/laporan_suratmasuk') or current_url() == base_url('admin/laporan_suratkeluar')) {
@@ -195,7 +195,21 @@
 				} ?>" href="<?php echo base_url('admin/laporan_suratkeluar') ?>">Laporan Surat Keluar</a>
 			</div>
 		</div>
+		
 	</li> - -->
+	<li class="nav-item
+	  <?php if (current_url() == base_url('laporan')) {
+			echo 'active';
+		} ?>
+	">
+	
+		<a class="nav-link" href="<?php echo base_url('laporan') ?>">
+			<i class="fas fa-fw fa-book"></i>
+			<span>Laporan Kegiatan</span>
+		</a>
+	
+
+	</li>
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 

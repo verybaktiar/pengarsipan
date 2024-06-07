@@ -25,7 +25,9 @@
     .login-title {
       margin-top: -150px; /* Mengatur margin atas */
       font-size: 30px;   /* Mengatur ukuran font */
-      
+    }
+    .container-login100 {
+      background: red !important; /* Mengubah background menjadi merah */
     }
   </style>
 </head>

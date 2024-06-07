@@ -1,11 +1,11 @@
 <?php
 
-class program extends CI_Controller
+class laporan extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('program_model');
+		$this->load->model('laporan_model');
 		$this->load->model('model_surat');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -18,7 +18,7 @@ class program extends CI_Controller
 
 	public function index()
 	{
-		$data['program'] = $this->program_model->get_all_program();
+		$data['laporan'] = $this->laporan_model->get_all_laporan();
 
 		if ($this->session->userdata('level') == 1) {
 			$data['user'] = 'superadmin';
@@ -29,7 +29,7 @@ class program extends CI_Controller
 		}
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('program/index', $data);
+		$this->load->view('laporan/index', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -51,7 +51,7 @@ class program extends CI_Controller
 
 
 			$this->load->view('templates/header', $data);
-			$this->load->view('program/create', $data);
+			$this->load->view('laporan/create', $data);
 			$this->load->view('templates/footer');
 		} else {
 			$data = array(
@@ -72,15 +72,15 @@ class program extends CI_Controller
 			if (!$this->upload->do_upload('gambar')) {
 				$error = array('error' => $this->upload->display_errors());
 				$this->load->view('templates/header', $data);
-				$this->load->view('program/create', $error);
+				$this->load->view('laporan/create', $error);
 				$this->load->view('templates/footer');
 			} else {
 				$file_data = $this->upload->data();
 				$data['gambar'] = $file_data['file_name'];
 
-				$this->program_model->tambah_program($data);
+				$this->laporan_model->tambah_laporan($data);
 				$this->session->set_flashdata('message', 'Data berhasil ditambah');
-				redirect('program');
+				redirect('laporan');
 			}
 		}
 	}

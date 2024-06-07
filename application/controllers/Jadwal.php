@@ -5,6 +5,8 @@ class Jadwal extends CI_Controller
 	private $waApiKey = "rd7jRzw@TC3gJL-g_Yc7";
 	private $waTarget = "120363297283780421@g.us";
 	private $waGroup = "120363297654090794@g.us";
+	private $waGroup2 = "120363305228884174@g.us";
+	
 
 	public function __construct()
 	{
@@ -90,6 +92,47 @@ class Jadwal extends CI_Controller
 				CURLOPT_CUSTOMREQUEST => 'POST',
 				CURLOPT_POSTFIELDS => array(
 					'target' => $this->waGroup,
+					'schedule' => $tiga_hari_sebelum,
+					'message' => "Assalamualaikum Wr.Wb. ". "\n" . "\n" .
+
+					"Sehubungan dengan akan dimulainya kegiatan sosialisasi /penyuluhan, maka disampaikan kepada seluruh anggota kader BKR agar mempersiapkan diri." . "\n" . "\n" .
+					
+					"[Tanggal] :" . date('d M Y', strtotime($tanggal_input)) . "\n" .
+					"[Waktu] : " . $data['waktu'] . "\n" .
+					"[Kegiatan] : " . $data['kegiatan'] . "\n" .
+					"[Tempat] : " . $data['tempat'] . "\n" .
+					"[Sasaran] : " . $data['sasaran'] . "\n" .
+					"[Keterangan] : " . $data['keterangan'] . "\n" .
+					"[Penanggung Jawab] : " . $data['penanggung_jawab'] ."\n" . "\n" .
+
+					"Demikian pengumuman ini disampaikan untuk jadwal lebih lengkap mohon di check di website. Terima Kasih!" . "\n" . "\n" .
+					
+					"Ttd.Ketua BKR",
+				),
+				CURLOPT_HTTPHEADER => array(
+					"Authorization: " . $this->waApiKey
+				),
+			));
+
+			$response = curl_exec($curl);
+			if (curl_errno($curl)) {
+				$error_msg = curl_error($curl);
+			}
+			curl_close($curl);
+			// Mengirim ke grup WhatsApp
+			$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+				CURLOPT_URL => 'https://api.fonnte.com/send',
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_POSTFIELDS => array(
+					'target' => $this->waGroup2,
 					'schedule' => $tiga_hari_sebelum,
 					'message' => "Assalamualaikum Wr.Wb. ". "\n" . "\n" .
 

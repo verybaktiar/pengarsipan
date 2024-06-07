@@ -12,13 +12,13 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Program Kerja</h1>
+                <h1 class="h3 mb-4 text-gray-800">Laporan Kegiatan</h1>
                 <div class="card card-success">
                     <div class="card-body">
                         <?= $this->session->flashdata('message'); ?>
                         <div class="row">
                             <div class="col-md-3">
-                                <a href="<?= base_url('program') ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali </a>
+                                <a href="<?= base_url('laporan') ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali </a>
                             </div>
                         </div>
                         <br>
@@ -53,8 +53,8 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status" required>
-                                            <option value="kegiatan_telah_dilaksanakan">Kegiatan Telah Dilaksanakan</option>
-                                            <option value="kegiatan_belum_dilaksanakan">Kegiatan Belum Dilaksanakan</option>
+                                            <option value="Kegiatan Telah Dilaksanakan">Kegiatan Telah Dilaksanakan</option>
+                                            <option value="Kegiatan Belum Dilaksanakan">Kegiatan Belum Dilaksanakan</option>
                                         </select>
                                     </div>
 
